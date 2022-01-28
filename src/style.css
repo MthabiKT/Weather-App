@@ -27,6 +27,7 @@ li {
   padding-left: 9px;
   padding-top: 6px;
 }
+
 .weather-app {
   padding: 20px;
   border: 1px solid #daddda;
@@ -40,4 +41,16 @@ li {
 
 .overview {
   margin-bottom: 20px;
+}
+
+.weather-temperature strong {
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
+.weather-temperature .units {
+  position: relative;
+  font-size: 15px;
+  top: -34px;
 }

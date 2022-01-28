@@ -8,7 +8,7 @@ function displayTemperature(response) {
   let iconElemnet = document.querySelector("#icon");
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
-  cityName.innerHTML = response.data.main.name;
+  cityName.innerHTML = response.data.name;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
@@ -54,7 +54,34 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-search("New York");
+search("Mbabane");
+
+function displayFahrenhietTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+
+  celsiusLink.classList.remove("active");
+  fahrenhietTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+}
 
 let form = document.querySelector("#search-form");
 form, addEventListener("submit", handleSubmit);
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-conversion");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius-conversion");
+celsiusLink.addEventListener("click", displayCelsius);
