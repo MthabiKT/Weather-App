@@ -7,6 +7,8 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElemnet = document.querySelector("#icon");
 
+  celsiusTemperature = response.data.main.temp;
+
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityName.innerHTML = response.data.name;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -56,18 +58,18 @@ function handleSubmit(event) {
 
 search("Mbabane");
 
-function displayFahrenhietTemperature(event) {
+function displayFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
 
   celsiusLink.classList.remove("active");
-  fahrenhietTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 
-function displayCelsiusTemperature(event) {
+function displayCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
@@ -76,12 +78,12 @@ function displayCelsiusTemperature(event) {
 }
 
 let form = document.querySelector("#search-form");
-form, addEventListener("submit", handleSubmit);
+form.addEventListener("submit", handleSubmit);
 
 let celsiusTemperature = null;
 
-let fahrenheitLink = document.querySelector("#fahrenheit-conversion");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
 
-let celsiusLink = document.querySelector("#celsius-conversion");
+let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius);
